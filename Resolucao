@@ -1,0 +1,140 @@
+#Exercício 4.1
+R:Absolutamente nada será impresso na tela.
+
+Explicação: O programa possui apenas duas condições: 
+if a > b (se 'a' for maior que 'b') e if b > a (se 'b' for maior que 'a'). 
+Se você digitar valores iguais (por exemplo, 5 e 5), ambas as condições serão falsas (5 > 5 é falso).
+Como não existe uma instrução de tratamento para a igualdade (como um if a == b ou um else), o programa simplesmente termina sem exibir nenhuma mensagem.
+
+#Exercicio 4.2
+velocidade = float(input("Qual é a velocidade do carro? "))
+
+if velocidade > 80:
+    km_acima = velocidade - 80
+    multa = km_acima * 5
+    print(f"Você foi multado. O valor da multa é de R$ {multa:.2f}.")
+else:
+    print("Você está dentro do limite de velocidade.")
+
+#Exercicio 4.3
+a = float(input("Digite o primeiro número: "))
+b = float(input("Digite o segundo número: "))
+c = float(input("Digite o terceiro número: "))
+
+maior = a
+if b > a and b > c:
+    maior = b
+if c > a and c > b:
+    maior = c
+menor = a
+if b < a and b < c:
+    menor = b
+if c < a and c < b:
+    menor = c
+
+print(f"O maior número é {maior}")
+print(f"O menor número é {menor}")
+
+#Exercicio 4.4
+salario = float(input("Digite o salário do funcionário: R$ "))
+                                                              
+if salario > 1250:
+    aumento = salario * 0.10
+else:
+    aumento = salario * 0.15
+
+novo_salario = salario + aumento
+print(f"O valor do aumento é de R$ {aumento:.2f}.")
+print(f"O novo salário é de R$ {novo_salario:.2f}.")
+
+#Exercicio 4.5
+Resposta: Sim, os resultados são exatamente os mesmos para qualquer valor testado.
+Explicação: Na Listagem 4.3, o programa realiza duas verificações de condições exclusivas (if idade <= 3: e if idade > 3:).
+Na Listagem 4.5, a cláusula else: substitui a segunda condição.
+Como um número só pode ser menor/igual a 3 ou maior que 3, a lógica do else (que executa quando a primeira condição é falsa) que subistitui o segundo if,
+tornando o código mais limpo e eficiente, pois o computador faz um teste lógico a menos.
+
+#Exercicio 4.6
+distancia = float(input("Qual a distância que deseja percorrer (em km)? "))
+
+if distancia <= 200:
+    preco = distancia * 0.50
+else:
+    preco = distancia * 0.45
+
+print(f"O preço da passagem é: R$ {preco:.2f}")
+
+#Exercicio 4.7
+Ao realizar o rastreamento manual linha por linha da Listagem 4.7, o fluxo lógico acontece da seguinte forma:
+Categoria 1: O programa executa a linha 1 (leitura), avalia a linha 2 como verdadeira, executa a linha 3 (preço = 10) e pula todos os else aninhados indo direto para a linha 19 (impressão). (Linhas executadas: 1, 2, 3, 19).
+Categoria 2: Linha 1 (leitura), linha 2 (falso), linha 4 (else), linha 5 (verdadeiro), linha 6 (preço = 18) e pula para a linha 19. (Linhas executadas: 1, 2, 4, 5, 6, 19).
+Categoria 3: Linhas 1, 2 (falso), 4 (else), 5 (falso), 7 (else), 8 (verdadeiro), 9 (preço = 23) e pula para a linha 19. (Linhas executadas: 1, 2, 4, 5, 7, 8, 9, 19).
+Categoria 4: Segue a cadeia de falsos até a linha 11 (verdadeiro), executando a linha 12 (preço = 26) e pulando para a linha 19. (Linhas executadas: 1, 2, 4, 5, 7, 8, 10, 11, 12, 19).
+Categoria 5: Segue a cadeia até a linha 14 (verdadeiro), executa a linha 15 (preço = 31) e encerra na linha 19. (Linhas executadas: 1, 2, 4, 5, 7, 8, 10, 11, 13, 14, 15, 19).
+Outras categorias (ex: 6): Passa por todas as estruturas falsas até cair no último else da linha 16, executando as linhas 17 (mensagem de erro) e 18 (preço = 0), finalizando na linha 19.(Linhas executadas: 1, 2, 4, 5, 7, 8, 10, 11, 13, 14, 16, 17, 18, 19)
+
+#Exercicio 4.8
+num1 = float(input("Digite o primeiro número: "))
+num2 = float(input("Digite o segundo número: "))
+operacao = input("Qual operação deseja realizar (+, -, *, /)? ")
+
+if operacao == "+":
+    resultado = num1 + num2
+elif operacao == "-":
+    resultado = num1 - num2
+elif operacao == "*":
+    resultado = num1 * num2
+elif operacao == "/":
+    if num2 != 0:
+        resultado = num1 / num2
+    else:
+        resultado = "Erro! Divisão por zero."
+else:
+    resultado = "Operação inválida!"
+
+print(f"Resultado: {resultado}")
+
+#Exercicio 4.9
+valor_casa = float(input("Digite o valor da casa: R$ "))
+salario = float(input("Digite o seu salário mensal: R$ "))
+anos_pagar = int(input("Quantidade de anos a pagar: "))
+
+meses = anos_pagar * 12
+prestacao = valor_casa / meses
+limite = salario * 0.30
+
+print(f"\nValor da prestação mensal: R$ {prestacao:.2f}")
+print(f"Limite máximo permitido (30% do salário): R$ {limite:.2f}")
+
+if prestacao <= limite:
+    print("Empréstimo aprovado")
+else:
+    print("Empréstimo negado. O valor da prestação supera o limite de 30% do seu salário.")
+
+#Exercicio 4.10
+kwh = float(input("Quantidade de kWh consumida: "))
+tipo = input("Tipo de instalação (R para residência, C para comércio, I para indústria): ").upper()
+
+if tipo == "R":
+    if kwh <= 500:
+        preco_unitario = 0.40
+    else:
+        preco_unitario = 0.65
+elif tipo == "C":
+    if kwh <= 1000:
+        preco_unitario = 0.55
+    else:
+        preco_unitario = 0.60
+elif tipo == "I":
+    if kwh <= 5000:
+        preco_unitario = 0.55
+    else:
+        preco_unitario = 0.60
+else:
+    preco_unitario = -1
+    print("Tipo de instalação inválido!")
+
+if preco_unitario != -1:
+    total = kwh * preco_unitario
+    print(f"Preço por kWh: R$ {preco_unitario:.2f}")
+    print(f"Total a pagar pelo fornecimento de energia: R$ {total:.2f}")
